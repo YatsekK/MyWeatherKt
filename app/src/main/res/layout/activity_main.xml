@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="weather"
+            type="yatsekk.example.com.myweatherkt.Weather" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,18 +22,19 @@
             android:layout_marginStart="@dimen/margin_normal_16"
             android:layout_marginTop="@dimen/margin_normal_16"
             android:layout_marginEnd="@dimen/margin_normal_16"
+            android:text="@={weather.cityName}"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Санкт-Петербург" />
+            tools:text="Санкт-Петербург" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_margin="@dimen/margin_normal_16"
-            app:layout_constraintBottom_toBottomOf="@id/wind_textView"
+            app:layout_constraintBottom_toBottomOf="@id/current_weather_linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/current_weather_linearLayout"
             app:layout_constraintTop_toTopOf="@id/current_weather_linearLayout"
@@ -52,58 +56,53 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
+                android:text="21°"
                 android:textAlignment="center"
                 android:textSize="48sp"
-                android:text="21°" />
+                tools:text="21°" />
 
             <TextView
                 android:id="@+id/current_weather_textView"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:maxLines="2"
-                android:text="Преимущественно облачно" />
+                android:text="@{weather.currentWeather}"
+                tools:text="Преимущественно облачно" />
+
+
+            <TextView
+                android:id="@+id/comfort_temp_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal_16"
+                android:text="@{weather.comfortTemp}"
+                tools:text="Температура комфорта: 20°" />
+
+            <TextView
+                android:id="@+id/humidity_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal_16"
+                android:text="@{weather.humidity}"
+                tools:text="Влажность: 66%" />
+
+            <TextView
+                android:id="@+id/pressure_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal_16"
+                android:text="@{weather.pressure}"
+                tools:text="Давление: 761 мм" />
+
+            <TextView
+                android:id="@+id/wind_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_normal_16"
+                android:text="@{weather.wind}"
+                tools:text="Ветер: Юго-западный 3.0 м/с" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/comfort_temp_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_normal_16"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/current_weather_linearLayout"
-            android:text="Температура комфорта: 20°" />
-
-        <TextView
-            android:id="@+id/humidity_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_normal_16"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/comfort_temp_textView"
-            android:text="Влажность: 66%" />
-
-        <TextView
-            android:id="@+id/pressure_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_normal_16"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/humidity_textView"
-            android:text="Давление: 761 мм" />
-
-        <TextView
-            android:id="@+id/wind_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_normal_16"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pressure_textView"
-            android:text="Ветер: Юго-западный 3.0 м/с" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
