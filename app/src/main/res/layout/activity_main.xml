@@ -15,14 +15,50 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <Button
+            android:id="@+id/show_weather_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="показать погоду"
+            android:layout_margin="@dimen/margin_normal_16"
+            app:layout_constraintBaseline_toBaselineOf="@+id/city_name_editText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/city_name_editText" />
+
+        <EditText
+            android:id="@+id/city_name_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Название города"
+            android:inputType="textPersonName"
+            android:layout_margin="@dimen/margin_small_8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/show_weather_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/margin_small_8"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="@+id/wind_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/wind_textView"
+            app:layout_constraintTop_toTopOf="@+id/current_temp_textView"
+            app:srcCompat="@drawable/weather_condition" />
+
         <TextView
             android:id="@+id/city_name_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_normal_16"
-            android:layout_marginBottom="8dp"
+            android:layout_margin="@dimen/margin_small_8"
             android:text="@={weather.cityName}"
             android:textSize="24sp"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,26 +66,15 @@
             app:layout_constraintVertical_bias="0.0"
             tools:text="Санкт-Петербург" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="@dimen/margin_normal_16"
-            app:layout_constraintBottom_toBottomOf="@+id/wind_textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/comfort_temp_textView"
-            app:layout_constraintTop_toTopOf="@+id/current_temp_textView"
-            app:srcCompat="@drawable/weather_condition" />
-
         <TextView
             android:id="@+id/current_temp_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_normal_16"
+            android:layout_marginTop="@dimen/margin_small_8"
             android:text="@{Integer.toString(weather.currentTemp)}"
             android:textAlignment="center"
-            android:textSize="48sp"
+            android:textSize="40sp"
             app:layout_constraintBottom_toTopOf="@+id/current_weather_textView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/city_name_textView"
@@ -62,7 +87,6 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_small_8"
             android:maxLines="2"
             android:text="@{weather.currentWeather}"
             app:layout_constraintBottom_toTopOf="@+id/comfort_temp_textView"
@@ -75,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_normal_16"
+            android:layout_marginTop="@dimen/margin_small_8"
             android:text="@{weather.comfortTemp}"
             app:layout_constraintBottom_toTopOf="@+id/humidity_textView"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +111,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_small_8"
             android:text="@{weather.humidity}"
             app:layout_constraintBottom_toTopOf="@+id/pressure_textView"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +122,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_small_8"
             android:text="@{weather.pressure}"
             app:layout_constraintBottom_toTopOf="@+id/wind_textView"
             app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_normal_16"
-            android:layout_marginTop="@dimen/margin_small_8"
+            android:layout_marginBottom="@dimen/margin_normal_16"
             android:text="@{weather.wind}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
