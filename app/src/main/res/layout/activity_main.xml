@@ -19,8 +19,8 @@
             android:id="@+id/show_weather_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="показать погоду"
             android:layout_margin="@dimen/margin_normal_16"
+            android:text="показать погоду"
             app:layout_constraintBaseline_toBaselineOf="@+id/city_name_editText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -30,9 +30,9 @@
             android:id="@+id/city_name_editText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_small_8"
             android:hint="Название города"
             android:inputType="textPersonName"
-            android:layout_margin="@dimen/margin_small_8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/show_weather_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
             android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="@+id/wind_textView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/wind_textView"
+            app:layout_constraintStart_toEndOf="@id/barrier"
             app:layout_constraintTop_toTopOf="@+id/current_temp_textView"
             app:srcCompat="@drawable/weather_condition" />
 
@@ -139,6 +139,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pressure_textView"
             tools:text="Ветер: Юго-западный 3.0 м/с" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="pressure_textView,wind_textView,current_temp_textView,current_weather_textView,humidity_textView,comfort_temp_textView"
+            tools:layout_editor_absoluteX="360dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
